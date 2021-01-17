@@ -1,0 +1,15 @@
+刷题心得：
+LC1017 Convert to Base -2: 
+    注意对Python来说reminder always has same sign with divisor，所以reminder只可能是-1或0。
+    但是我们要求reminder是1，为了补偿，所以每次N = N//-2之前要-1。
+    
+LC215 Kth Largest Element in an Array:
+    直接的解法是sorting，复杂度O(nlogn)：
+    nums.sort()
+    return nums[-k]
+    但是面试的时候应该，写些什么，所以用quick select，复杂度O(n)。
+    选择一个pivot: item = random.choice(nums)
+    然后recursively find the item：分成三个sublist，大于item，等于item，小于item。
+    如果大于item的list长度大于等于k，那么在大于item的list里找第k个，
+    如果k大于前两个list的长度的和，那么在小于item的list里面找第k-len(left)-len(mid)个，
+    else 第k个value在等于item的list里，return item
